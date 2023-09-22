@@ -80,11 +80,39 @@ describe("Webdriverio main page", () => {
         console.log("Location by x is: " + xLocation) //x
     });
 
-    it("should show getText command", async () => {
+    xit("should show getText command", async () => {
         await browser.url("https://webdriver.io");
 
         let subtitle = await $(".hero__subtitle");
         console.log("\nSubtitle text is: " + await subtitle.getText() + "\n") // Next-gen browser and mobile automation test framework for Node.js
         await expect(subtitle).toHaveText("Next-gen browser and mobile automation test framework for Node.js")
+    });
+
+    it("HW", async () => {
+        await browser.url("https://webdriver.io");
+
+        let linkAPI = await $("=API");
+        await linkAPI.click();
+        await expect(browser).toHaveUrl("https://webdriver.io/docs/api");
+
+        let header = await $("h1=Introduction");
+        await expect(header).toHaveText("Introduction");
+
+        let breadcrumbs = await $(".breadcrumbs__link=Introduction");
+        await expect(breadcrumbs).toHaveText("Introduction");
+
+        let linkWebDriver = await $("a=WebDriver");
+        await expect(linkWebDriver).toHaveAttribute("href", "/docs/api/webdriver");
+
+        let SearchButton = await $(".DocSearch.DocSearch-Button");
+        await SearchButton.click();
+
+        let inputSearch = await $(".DocSearch-Input");
+        await inputSearch.setValue("all is done");
+        await expect(inputSearch).toHaveValue("all is done");
+        
+        let closeButton = await $("button[type='reset']");
+        await closeButton.click();
+        await browser.pause(2000);
     });
 });
