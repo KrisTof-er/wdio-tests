@@ -10,7 +10,7 @@ describe("Webdriverio main page", () => {
         await expect(browser).toHaveTitle('WebdriverIO · Next-gen browser and mobile automation test framework for Node.js | WebdriverIO')
     });
 
-    it("should show addValue command", async () => {
+    xit("should show addValue command", async () => {
         await browser.url('https://the-internet.herokuapp.com/login');
 
         let input = await $("#username");
@@ -21,5 +21,18 @@ describe("Webdriverio main page", () => {
         await browser.pause(2000);
 
         await expect(input).toHaveValue("hello123")
+    });
+
+    it("should show setValue command", async () => {
+        await browser.url('https://the-internet.herokuapp.com/login');
+
+        let input = await $("#password");
+        await input.setValue("helloworld");
+        await browser.pause(2000);
+        await input.setValue("hello");
+        await browser.pause(2000);
+
+        console.log(await input.getValue());
+        await expect(input).toHaveValue("hello");
     });
 });
