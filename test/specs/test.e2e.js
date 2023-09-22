@@ -1,15 +1,12 @@
 import { expect } from '@wdio/globals'
-import LoginPage from '../pageobjects/login.page.js'
-import SecurePage from '../pageobjects/secure.page.js'
 
-describe('My Login application', () => {
-    it('should login with valid credentials', async () => {
-        await LoginPage.open()
+describe("Webdriverio main page", () => {
+    it("should have correct title", async () => {
+        await browser.url('https://webdriver.io/');
 
-        await LoginPage.login('tomsmith', 'SuperSecretPassword!')
-        await expect(SecurePage.flashAlert).toBeExisting()
-        await expect(SecurePage.flashAlert).toHaveTextContaining(
-            'You logged into a secure area!')
-    })
-})
+        const title = await browser.getTitle();
+        console.log(title);
 
+        await expect(browser).toHaveTitle('WebdriverIO · Next-gen browser and mobile automation test framework for Node.js | WebdriverIO')
+    });
+});
