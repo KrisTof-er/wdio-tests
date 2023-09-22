@@ -69,7 +69,7 @@ describe("Webdriverio main page", () => {
         console.log("Attribute value is: " + attr) // Cat
     });
 
-    it("should show getLocation command", async () => {
+    xit("should show getLocation command", async () => {
         await browser.url("https://dou.ua");
 
         let inputSearch = await $("#txtGlobalSearch");
@@ -78,5 +78,13 @@ describe("Webdriverio main page", () => {
 
         let xLocation = await inputSearch.getLocation("x");
         console.log("Location by x is: " + xLocation) //x
+    });
+
+    it("should show getText command", async () => {
+        await browser.url("https://webdriver.io");
+
+        let subtitle = await $(".hero__subtitle");
+        console.log("\nSubtitle text is: " + await subtitle.getText() + "\n") // Next-gen browser and mobile automation test framework for Node.js
+        await expect(subtitle).toHaveText("Next-gen browser and mobile automation test framework for Node.js")
     });
 });
