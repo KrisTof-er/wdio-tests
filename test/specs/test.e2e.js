@@ -23,7 +23,7 @@ describe("Webdriverio main page", () => {
         await expect(input).toHaveValue("hello123")
     });
 
-    it("should show setValue command", async () => {
+    xit("should show setValue command", async () => {
         await browser.url('https://the-internet.herokuapp.com/login');
 
         let input = await $("#password");
@@ -34,5 +34,25 @@ describe("Webdriverio main page", () => {
 
         console.log(await input.getValue());
         await expect(input).toHaveValue("hello");
+    });
+
+    it("should show click command", async () => {
+        await browser.url('https://the-internet.herokuapp.com/login');
+
+        let loginButton = await $(".radius");
+        await browser.pause(2000);
+        await loginButton.click();
+        await browser.pause(4000);
+
+        let inputUsername = await $("#username");
+        await inputUsername.addValue("tomsmith");
+        await browser.pause(2000);
+
+        let inputPassword = await $("#password");
+        await inputPassword.addValue("SuperSecretPassword!");
+        await browser.pause(2000);
+
+        await loginButton.click();
+        await browser.pause(4000);
     });
 });
