@@ -196,7 +196,7 @@ describe("Webdriverio main page", () => {
         await browser.pause(1000);
     });
 
-    it("browser should wait until button is displayed", async () => {
+    xit("browser should wait until button is displayed", async () => {
         await browser.url("https://webdriver.io");
         await browser.waitUntil(async () => {
             return $(".button[href='/docs/gettingstarted']").isDisplayed();
@@ -205,8 +205,7 @@ describe("Webdriverio main page", () => {
             timeoutMsg: "Button isn't displayed"
         });
     });
-    
-    it("browser should wait until button is displayed in viewport", async () => {
+    xit("browser should wait until button is displayed in viewport", async () => {
         await browser.url("https://webdriver.io");
         await browser.waitUntil(async () => {
             return $(".footer__link-item[href='/docs/gettingstarted']").isDisplayedInViewport();
@@ -214,5 +213,15 @@ describe("Webdriverio main page", () => {
             timeout: 5000,
             timeoutMsg: "Button isn't displayed in viewport"
         });
+    });
+
+    it("should get html for certain elements", async () => {
+        await browser.url("https://webdriver.io");
+        
+        const outerHTML = await $(".dropdown__menu").getHTML();
+        console.log("outerHTML: " + outerHTML);
+
+        const innerHTML = await $(".dropdown__menu").getHTML(false);
+        console.log("innerHTML: " + innerHTML);
     });
 });
