@@ -132,7 +132,7 @@ describe("Webdriverio main page", () => {
         console.log("\n\tIs displayed: " + displayed + "\n")  // true
     });
 
-    it("should show if an element is visible", async () => {
+    xit("should show if an element is visible", async () => {
         await browser.url("https://webdriver.io");
 
         const blogButton = await $(".button[href='/docs/gettingstarted']");
@@ -142,5 +142,13 @@ describe("Webdriverio main page", () => {
         const footer = await $(".footer__link-item[href='/docs/gettingstarted']");
         let footerDisplayedInViewport = await footer.isDisplayedInViewport();
         console.log("\n\tIs Footer displayed in Viewport: " + footerDisplayedInViewport + "\n");  // false
+    });
+
+    it("should show if an element is enabled", async () => {
+        await browser.url("https://webdriver.io");
+
+        const getStartedButton = await $(".button[href='/docs/gettingstarted']");
+        let isEnabled = await getStartedButton.isEnabled();
+        console.log("\n\tIs get started button enabled: " + isEnabled + "\n")  // true
     });
 });
