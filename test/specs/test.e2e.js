@@ -144,11 +144,24 @@ describe("Webdriverio main page", () => {
         console.log("\n\tIs Footer displayed in Viewport: " + footerDisplayedInViewport + "\n");  // false
     });
 
-    it("should show if an element is enabled", async () => {
+    xit("should show if an element is enabled", async () => {
         await browser.url("https://webdriver.io");
 
         const getStartedButton = await $(".button[href='/docs/gettingstarted']");
         let isEnabled = await getStartedButton.isEnabled();
         console.log("\n\tIs get started button enabled: " + isEnabled + "\n")  // true
+    });
+
+    it("should show if an element is focused", async () => {
+        await browser.url("https://webdriver.io");
+
+        const searchButton = await $(".DocSearch.DocSearch-Button");
+        let isFocused = await searchButton.isFocused();
+        console.log("\n\tIs search button focused before click: " + isFocused + "\n")  // false
+        await browser.pause(1000);
+        await searchButton.click();
+        let isFocusedAfterClick = await searchButton.isFocused();
+        console.log("\n\tIs search button focused after click: " + isFocusedAfterClick + "\n")  // true
+        await browser.pause(1000);
     });
 });
