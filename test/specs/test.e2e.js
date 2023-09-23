@@ -124,11 +124,23 @@ describe("Webdriverio main page", () => {
         console.log("\n\tIs Clickable: " + clickable + "\n")  // true
     });
 
-    it("should show if an element is displayed", async () => {
+    xit("should show if an element is displayed", async () => {
         await browser.url("https://webdriver.io");
 
         const blogButton = await $(".button[href='/docs/gettingstarted']");
         let displayed = await blogButton.isDisplayed();
         console.log("\n\tIs displayed: " + displayed + "\n")  // true
+    });
+
+    it("should show if an element is visible", async () => {
+        await browser.url("https://webdriver.io");
+
+        const blogButton = await $(".button[href='/docs/gettingstarted']");
+        let displayedInViewport = await blogButton.isDisplayedInViewport();
+        console.log("\n\tIs displayed in Viewport: " + displayedInViewport + "\n")  // true
+
+        const footer = await $(".footer__link-item[href='/docs/gettingstarted']");
+        let footerDisplayedInViewport = await footer.isDisplayedInViewport();
+        console.log("\n\tIs Footer displayed in Viewport: " + footerDisplayedInViewport + "\n");  // false
     });
 });
