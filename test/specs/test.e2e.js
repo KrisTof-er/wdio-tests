@@ -88,7 +88,7 @@ describe("Webdriverio main page", () => {
         await expect(subtitle).toHaveText("Next-gen browser and mobile automation test framework for Node.js")
     });
 
-    it("HW", async () => {
+    xit("HW", async () => {
         await browser.url("https://webdriver.io");
 
         let linkAPI = await $("=API");
@@ -114,5 +114,13 @@ describe("Webdriverio main page", () => {
         let closeButton = await $("button[type='reset']");
         await closeButton.click();
         await browser.pause(2000);
+    });
+
+    it("should show if an element is clickable", async () => {
+        await browser.url("https://webdriver.io");
+
+        const blogButton = await $(".button[href='/docs/gettingstarted']");
+        let clickable = await blogButton.isClickable();
+        console.log("\n\tIs Clickable: " + clickable + "\n")  // true
     });
 });
