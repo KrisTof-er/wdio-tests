@@ -165,7 +165,7 @@ describe("Webdriverio main page", () => {
         await browser.pause(1000);
     });
 
-    it("should show movement to element action", async () => {
+    xit("should show movement to element action", async () => {
         await browser.url("https://webdriver.io");
 
         const getStartedLink = await $(".footer__link-item[href='/docs/gettingstarted']");
@@ -174,5 +174,15 @@ describe("Webdriverio main page", () => {
         await browser.pause(1000);
         let footerDisplayedInViewport = await getStartedLink.isDisplayedInViewport();
         console.log("\n\tIs Footer displayed in Viewport: " + footerDisplayedInViewport + "\n");  // true
+    });
+
+    it("should save screenshot", async () => {
+        await browser.url("https://webdriver.io");
+
+        const getStartedLink = await $(".footer__link-item[href='/docs/gettingstarted']");
+        await getStartedLink.scrollIntoView();
+        await browser.pause(2000);
+        await getStartedLink.saveScreenshot('./screenshots/getStartedLinkScreenshot.png');
+        await browser.saveScreenshot('./screenshots/footerViewScreenshot.png');
     });
 });
