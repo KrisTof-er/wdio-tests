@@ -186,7 +186,7 @@ describe("Webdriverio main page", () => {
         await browser.saveScreenshot('./screenshots/footerViewScreenshot.png');
     });
 
-    it("should switch to another window", async () => {
+    xit("should switch to another window", async () => {
         await browser.url("https://webdriver.io");
 
         await browser.newWindow("https://google.com");
@@ -194,5 +194,25 @@ describe("Webdriverio main page", () => {
 
         await browser.switchWindow("https://webdriver.io");
         await browser.pause(1000);
+    });
+
+    it("browser should wait until button is displayed", async () => {
+        await browser.url("https://webdriver.io");
+        await browser.waitUntil(async () => {
+            return $(".button[href='/docs/gettingstarted']").isDisplayed();
+        }, {
+            timeout: 30000,
+            timeoutMsg: "Button isn't displayed"
+        });
+    });
+    
+    it("browser should wait until button is displayed in viewport", async () => {
+        await browser.url("https://webdriver.io");
+        await browser.waitUntil(async () => {
+            return $(".footer__link-item[href='/docs/gettingstarted']").isDisplayedInViewport();
+        }, {
+            timeout: 5000,
+            timeoutMsg: "Button isn't displayed in viewport"
+        });
     });
 });
