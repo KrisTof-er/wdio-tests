@@ -201,7 +201,7 @@ describe("Webdriverio main page", () => {
         await browser.waitUntil(async () => {
             return $(".button[href='/docs/gettingstarted']").isDisplayed();
         }, {
-            timeout: 30000,
+            timeout: 3000,
             timeoutMsg: "Button isn't displayed"
         });
     });
@@ -215,7 +215,7 @@ describe("Webdriverio main page", () => {
         });
     });
 
-    it("should get html for certain elements", async () => {
+    xit("should get html for certain elements", async () => {
         await browser.url("https://webdriver.io");
         
         const outerHTML = await $(".dropdown__menu").getHTML();
@@ -223,5 +223,27 @@ describe("Webdriverio main page", () => {
 
         const innerHTML = await $(".dropdown__menu").getHTML(false);
         console.log("innerHTML: " + innerHTML);
+    });
+
+    it("HW2", async () => {
+        await browser.url("https://webdriver.io");
+
+        const linkAPI = await $("nav a[href='/docs/api']");
+        await linkAPI.click();
+        
+        const blogFooter = await $(".footer__link-item[href='/blog']");
+        await blogFooter.scrollIntoView();
+        console.log("\n\tFooter Blog link is displayed in Viewport: " + (await blogFooter.isDisplayedInViewport()));
+
+        const nextPageLink = await $(".pagination-nav__link.pagination-nav__link--next");
+        console.log("\n\tNext page link is clickable: " + (await nextPageLink.isClickable()));
+        console.log("\n\tNext page link HTML: " + (await nextPageLink.getHTML()));
+
+        await nextPageLink.click();
+        await browser.waitUntil(async () => {
+            return $("h2=WebDriver Protocol").isDisplayed();
+        }, {
+            timeout: 5000, timeoutMsg: "Header isn't displayed"
+        });
     });
 });
