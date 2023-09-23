@@ -152,7 +152,7 @@ describe("Webdriverio main page", () => {
         console.log("\n\tIs get started button enabled: " + isEnabled + "\n")  // true
     });
 
-    it("should show if an element is focused", async () => {
+    xit("should show if an element is focused", async () => {
         await browser.url("https://webdriver.io");
 
         const searchButton = await $(".DocSearch.DocSearch-Button");
@@ -163,5 +163,16 @@ describe("Webdriverio main page", () => {
         let isFocusedAfterClick = await searchButton.isFocused();
         console.log("\n\tIs search button focused after click: " + isFocusedAfterClick + "\n")  // true
         await browser.pause(1000);
+    });
+
+    it("should show movement to element action", async () => {
+        await browser.url("https://webdriver.io");
+
+        const getStartedLink = await $(".footer__link-item[href='/docs/gettingstarted']");
+        await browser.pause(1000);
+        await getStartedLink.scrollIntoView();
+        await browser.pause(1000);
+        let footerDisplayedInViewport = await getStartedLink.isDisplayedInViewport();
+        console.log("\n\tIs Footer displayed in Viewport: " + footerDisplayedInViewport + "\n");  // true
     });
 });
