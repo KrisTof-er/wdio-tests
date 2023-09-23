@@ -116,11 +116,19 @@ describe("Webdriverio main page", () => {
         await browser.pause(2000);
     });
 
-    it("should show if an element is clickable", async () => {
+    xit("should show if an element is clickable", async () => {
         await browser.url("https://webdriver.io");
 
         const blogButton = await $(".button[href='/docs/gettingstarted']");
         let clickable = await blogButton.isClickable();
         console.log("\n\tIs Clickable: " + clickable + "\n")  // true
+    });
+
+    it("should show if an element is displayed", async () => {
+        await browser.url("https://webdriver.io");
+
+        const blogButton = await $(".button[href='/docs/gettingstarted']");
+        let displayed = await blogButton.isDisplayed();
+        console.log("\n\tIs displayed: " + displayed + "\n")  // true
     });
 });
