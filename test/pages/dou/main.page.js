@@ -20,9 +20,6 @@ class MainPage {
     get jobsBtn() {
         return $("a[href='https://jobs.dou.ua/']");
     }
-    get jobSearchBtn() {
-        return $(".btn-search");
-    }
     get searchInput() {
         return $("#txtGlobalSearch");
     }
@@ -44,9 +41,6 @@ class MainPage {
     }
     async clickOnJobsBtn() {
         await this.jobsBtn.click();
-    }
-    async clickOnJobSearchBtn() {
-        await this.jobSearchBtn.click();
     }
     async setSearchInput(value) {
         await this.searchInput.setValue(value);

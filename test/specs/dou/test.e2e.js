@@ -1,6 +1,7 @@
 import MainPage from "../../pages/dou/main.page.js";
 import GameDevPage from "../../pages/dou/gamedev.page.js";
 import RelocatePage from "../../pages/dou/relocate.page.js";
+import JobsPage from "../../pages/dou/jobs.page.js";
 
 describe("Dou pages", () => {
     xit("should click buttons", async () => {
@@ -33,9 +34,9 @@ describe("Dou pages", () => {
         await expect(salariesGroups).toHaveTextContaining("КВАРТИЛЬ");
 
         await MainPage.clickOnJobsBtn();
-        await expect(MainPage.jobSearchBtn).toBeDisplayed();
-        await MainPage.clickOnJobSearchBtn();
-        await expect(await $(".example")).toHaveTextContaining("Швидкий перехід");
+        await expect(JobsPage.jobSearchBtn).toBeDisplayed();
+        await JobsPage.clickOnJobSearchBtn();
+        await expect(JobsPage.jumpBlock).toHaveTextContaining("Швидкий перехід");
 
         await MainPage.clickOnRelocateBtn();
         await expect(RelocatePage.newsBlock).toExist();
