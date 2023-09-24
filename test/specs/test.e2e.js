@@ -1,4 +1,5 @@
-import { expect } from '@wdio/globals'
+import assert from "assert/strict"
+// import { expect } from '@wdio/globals'
 
 describe("Webdriverio main page", () => {
     xit("should have correct title", async () => {
@@ -225,7 +226,7 @@ describe("Webdriverio main page", () => {
         console.log("innerHTML: " + innerHTML);
     });
 
-    it("HW2", async () => {
+    xit("HW2", async () => {
         await browser.url("https://webdriver.io");
 
         const linkAPI = await $("nav a[href='/docs/api']");
@@ -245,5 +246,10 @@ describe("Webdriverio main page", () => {
         }, {
             timeout: 5000, timeoutMsg: "Header isn't displayed"
         });
+    });
+
+    it("show assertion check", async () => {
+        assert(1 === 1, "elem 1 not equals 1");
+        assert(1 === "1", "elem 1 not equals '1'");
     });
 });
