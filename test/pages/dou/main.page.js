@@ -1,21 +1,30 @@
 class MainPage {
+    get MainURL() {
+        return "https://dou.ua";
+    }
     get forumBtn() {
-        return $("a[href='https://dou.ua/forums/']")
+        return $("a[href='https://dou.ua/forums/']");
     }
     get bandBtn() {
-        return $("a[href='https://dou.ua/lenta/']")
+        return $("a[href='https://dou.ua/lenta/']");
     }
     get salariesBtn() {
-        return $("a[href='https://jobs.dou.ua/salaries/']")
+        return $("a[href='https://jobs.dou.ua/salaries/']");
     }
     get gameDevBtn() {
-        return $(".menu-site__gamedev")
+        return $(".menu-site__gamedev");
     }
     get relocateBtn() {
-        return $(".menu-site__relocate")
+        return $(".menu-site__relocate");
+    }
+    get jobsBtn() {
+        return $("a[href='https://jobs.dou.ua/']");
+    }
+    get jobSearchBtn() {
+        return $(".btn-search");
     }
     get searchInput() {
-        return $("#txtGlobalSearch")
+        return $("#txtGlobalSearch");
     }
 
     async clickOnForumBtn() {
@@ -32,6 +41,12 @@ class MainPage {
     }
     async clickOnRelocateBtn() {
         await this.relocateBtn.click();
+    }
+    async clickOnJobsBtn() {
+        await this.jobsBtn.click();
+    }
+    async clickOnJobSearchBtn() {
+        await this.jobSearchBtn.click();
     }
     async setSearchInput(value) {
         await this.searchInput.setValue(value);
