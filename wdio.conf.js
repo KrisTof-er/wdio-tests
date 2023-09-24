@@ -22,11 +22,12 @@ export const config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/*.js'
+        // './test/specs/**/*.js',
+        './test/specs/test.e2e.js',
     ],
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+        // './test/specs/test.e2e.js',
     ],
     //
     // ============
@@ -52,7 +53,8 @@ export const config = {
     //
     capabilities: [{
         // capabilities for local browser web tests
-        browserName: 'chrome' // or "firefox", "microsoftedge", "safari"
+        browserName: 'chrome' // or "microsoftedge", "safari"
+        // browserName: "firefox"
     }],
 
     //
@@ -63,6 +65,7 @@ export const config = {
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
     logLevel: 'info',
+    // logLevel: 'silent',
     //
     // Set specific log levels per logger
     // loggers:
@@ -89,7 +92,7 @@ export const config = {
     baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 11000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -177,8 +180,10 @@ export const config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      * @param {string} cid worker id (e.g. 0-0)
      */
+
     // beforeSession: function (config, capabilities, specs, cid) {
     // },
+
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.

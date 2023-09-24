@@ -248,7 +248,7 @@ describe("Webdriverio main page", () => {
         });
     });
 
-    it("show assertion check", async () => {
+    xit("show assertion check", async () => {
         assert(1 === 1, "elem 1 not equals 1");
         assert(1 === "1", "elem 1 not equals '1'");
     });

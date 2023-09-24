@@ -1,5 +1,5 @@
 {
-  "name": "my-new-project",
+  "name": "test-project",
   "type": "module",
   "devDependencies": {
     "@wdio/cli": "^8.16.12",
@@ -8,6 +8,7 @@
     "@wdio/spec-reporter": "^8.16.12"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js"
+    "wdio": "wdio run ./wdio.conf.js",
+    "test": "echo 'Error: no test specified' && exit 1"
   }
 }
