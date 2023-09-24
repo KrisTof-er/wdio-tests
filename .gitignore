@@ -1,3 +1,4 @@
 # .gitignore
 /screenshots/**
 !screenshots/.gitkeep
+/test_docs/**
